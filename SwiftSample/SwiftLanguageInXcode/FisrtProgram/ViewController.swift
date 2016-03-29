@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    //https://bitbucket.org/NiteshKumarPal/swiftconcept
+    //https://github.com/NiteshKumar-webonise/SwiftParadigmForBegginer/
     //http://www.learnswift.tips/
     //https://github.com/allenwong/30DaysofSwift
     //https://github.com/vandadnp/iOS-8-Swift-Programming-Cookbook
