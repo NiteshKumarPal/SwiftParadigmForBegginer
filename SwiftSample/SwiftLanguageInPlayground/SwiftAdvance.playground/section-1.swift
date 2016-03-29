@@ -31,8 +31,7 @@ struct Rect {
     var size = Size()
 }
 let defaultRect = Rect()
-let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0),
-    size: Size(width: 5.0, height: 5.0))
+let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 
 extension Rect {
     init(center: Point, size: Size) {
@@ -49,20 +48,20 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 //Method
 extension Int {
     func repetitions(task: () -> ()) {
-        for i in 0..<self {
+        for _ in 0..<self {
             task()
         }
     }
 }
 3.repetitions({
-    println("Hello!")
+    print("Hello!")
     })
 // Hello!
 // Hello!
 // Hello!
 
 3.repetitions ({
-    println("Goodbye!")
+    print("Goodbye!")
 })
 // Goodbye!
 // Goodbye!
@@ -105,11 +104,11 @@ func capitalLetters1(s: String) -> [Character] {
     func isCapital(c: Character) -> Bool {
         return ("A"..."Z").contains(c)
     }
-    return filter(s, isCapital)
+    return s.characters.filter(){isCapital($0)}
 }
 
 func capitalLetters(s: String) -> [Character] {
-    return filter(s) { ("A"..."Z").contains($0) }
+    return s.characters.filter(){ ("A"..."Z").contains($0) }
 }
 
 ("A"..."Z").contains("bFd")
@@ -134,8 +133,8 @@ extension Character {
 }
 
 func printLetterKinds(word: String) {
-    println("'\(word)' is made up of the following kinds of letters:")
-    for character in word {
+    print("'\(word)' is made up of the following kinds of letters:")
+    for character in word.characters {
         switch character.kind {
         case .Vowel:
             print("vowel ")
@@ -300,16 +299,16 @@ class DiceGameTracker: DiceGameDelegate {
     func gameDidStart(game: DiceGame) {
         numberOfTurns = 0
         if game is SnakesAndLadders {
-            println("Started a new game of Snakes and Ladders")
+            print("Started a new game of Snakes and Ladders")
         }
-        println("The game is using a \(game.dice.sides)-sided dice")
+        print("The game is using a \(game.dice.sides)-sided dice")
     }
     func game(game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
         ++numberOfTurns
-        println("Rolled a \(diceRoll)")
+        print("Rolled a \(diceRoll)")
     }
     func gameDidEnd(game: DiceGame) {
-        println("The game lasted for \(numberOfTurns) turns")
+        print("The game lasted for \(numberOfTurns) turns")
     }
 }
 
@@ -337,7 +336,7 @@ extension Dice: TextRepresentable {
 }
 //Any Dice instance can now be treated as TextRepresentable:
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
-println(d12.asText())
+print(d12.asText())
 // prints "A 12-sided dice"
 
 //same as
@@ -346,7 +345,7 @@ extension SnakesAndLadders: TextRepresentable {
         return "A game of Snakes and Ladders with \(finalSquare) squares"
     }
 }
-println(game.asText())
+print(game.asText())
 // prints "A game of Snakes and Ladders with 25 squares"
 
 //Declaring Protocol Adoption with an Extension
@@ -361,14 +360,14 @@ extension Hamster: TextRepresentable {}
 //Instances of Hamster can now be used wherever TextRepresentable is the required type:
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
-println(somethingTextRepresentable.asText())
+print(somethingTextRepresentable.asText())
 // prints "A hamster named Simon"
 
 
 //Collections of Protocol Types
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 for thing in things {
-    println(thing.asText())
+    print(thing.asText())
 }
 // A game of Snakes and Ladders with 25 squares
 // A 12-sided dice
@@ -386,10 +385,10 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 
 var someInteger = 3
 var anotherInt = 107
-swapTwoInts(&someInteger, &anotherInt)
+swapTwoInts(&someInteger, b: &anotherInt)
 someInteger
 anotherInt
-println("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // prints "someInt is now 107, and anotherInt is now 3"
 
 func swapTwoStrings(inout a: String, inout b: String) {
@@ -411,12 +410,12 @@ func swapTwoValues<T>(inout a: T, inout b: T) {
 }
 
 
-swapTwoValues(&someInt, &anotherInt)
+swapTwoValues(&someInt, b: &anotherInt)
 // someInt is now 107, and anotherInt is now 3
 
 var someString = "hello"
 var anotherString = "world"
-swapTwoValues(&someString, &anotherString)
+swapTwoValues(&someString, b: &anotherString)
 // someString is now "world", and anotherString is now "hello"
 someString
 anotherString
@@ -470,7 +469,7 @@ extension Stack {
 
 //Type Constraints in Action
 func findStringIndex(array: [String], valueToFind: String) -> Int? {
-    for (index, value) in enumerate(array) {
+    for (index, value) in array.enumerate() {
         if value == valueToFind {
             return index
         }
@@ -479,13 +478,13 @@ func findStringIndex(array: [String], valueToFind: String) -> Int? {
 }
 
 let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
-if let foundIndex = findStringIndex(strings, "llama") {
+if let foundIndex = findStringIndex(strings, valueToFind: "llama") {
     "The index of llama is \(foundIndex)"
 }
 // prints "The index of llama is 2"
 
 func findIndex<T:Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+    for (index, value) in array.enumerate() {
         if value == valueToFind {
             return index
         }
@@ -493,9 +492,9 @@ func findIndex<T:Equatable>(array: [T], valueToFind: T) -> Int? {
     return nil
 }
 
-let doubleIndex = findIndex([3.14159, 0.1, 0.25], 9.3)
+let doubleIndex = findIndex([3.14159, 0.1, 0.25], valueToFind: 9.3)
 // doubleIndex is an optional Int with no value, because 9.3 is not in the array
-let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
+let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], valueToFind: "Andrea")
 // stringIndex is an optional Int containing a value of 2
 
 //associated Types in action
@@ -582,7 +581,7 @@ stackOfStrings.push("tres")
 
 var arrayOfStrings = ["uno", "dos", "tres"]
 
-if allItemsMatch(otherStackOfStrings, arrayOfStrings) {
+if allItemsMatch(otherStackOfStrings, anotherContainer: arrayOfStrings) {
      "All items match."
 } else {
     "Not all items match."

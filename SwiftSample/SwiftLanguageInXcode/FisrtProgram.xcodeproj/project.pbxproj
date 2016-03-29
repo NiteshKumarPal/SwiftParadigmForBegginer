@@ -13,6 +13,7 @@
 		5986722E1949D31E00B97F76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5986722C1949D31E00B97F76 /* Main.storyboard */; };
 		598672301949D31E00B97F76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5986722F1949D31E00B97F76 /* Images.xcassets */; };
 		5986723C1949D31E00B97F76 /* FisrtProgramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986723B1949D31E00B97F76 /* FisrtProgramTests.swift */; };
+		9652CE0C1CA9AD5E00C011FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9652CE0B1CA9AD5E00C011FB /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		598672351949D31E00B97F76 /* FisrtProgramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FisrtProgramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5986723A1949D31E00B97F76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5986723B1949D31E00B97F76 /* FisrtProgramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FisrtProgramTests.swift; sourceTree = "<group>"; };
+		9652CE0B1CA9AD5E00C011FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				5986722F1949D31E00B97F76 /* Images.xcassets */,
 				598672271949D31E00B97F76 /* FisrtProgram.xcdatamodeld */,
 				598672231949D31D00B97F76 /* Supporting Files */,
+				9652CE0B1CA9AD5E00C011FB /* Launch Screen.storyboard */,
 			);
 			path = FisrtProgram;
 			sourceTree = "<group>";
@@ -156,6 +159,8 @@
 		598672181949D31D00B97F76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Webonise;
 				TargetAttributes = {
@@ -192,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9652CE0C1CA9AD5E00C011FB /* Launch Screen.storyboard in Resources */,
 				5986722E1949D31E00B97F76 /* Main.storyboard in Resources */,
 				598672301949D31E00B97F76 /* Images.xcassets in Resources */,
 			);
@@ -328,7 +334,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = FisrtProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -340,7 +345,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = FisrtProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

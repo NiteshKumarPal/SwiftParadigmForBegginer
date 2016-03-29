@@ -9,7 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-                            
+    //https://bitbucket.org/NiteshKumarPal/swiftconcept
+    //http://www.learnswift.tips/
+    //https://github.com/allenwong/30DaysofSwift
+    //https://github.com/vandadnp/iOS-8-Swift-Programming-Cookbook
+    
+    /*
+    some basics
+    Constant defined by let and variables defined by var
+    all c Arithmetic operators (+, -, *, /, % and so forth) follows
+    but care for this --> disallow value overflow
+    ex:
+    var potentialOverflow = Int16.max
+    // potentialOverflow equals 32767, which is the maximum value an Int16 can hold
+    potentialOverflow += 1
+    // this causes an error
+    
+    Swift also provides two range operators (a..<b and a...b) not found in C
+    
+    nil-coalescing operator a ?? b
+    rest unary binary ternary operator 
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +43,7 @@ class ViewController: UIViewController {
         
         //“Floating-Point Remainder Calculations”
         let floatRemainder = 8 % 2.5
-        println("floatRemainder \(floatRemainder)")
+        print("floatRemainder \(floatRemainder)")
         
         //working with range Operator
          rangeOperator()
@@ -38,7 +59,7 @@ class ViewController: UIViewController {
         
         //arrayImplimentation
         arrayImplimentations()
-        //swift dynamic (type inference) behaviour with dictionary and lopps
+        //swift dynamic (type inference) behaviour with dictionary and loops
         
         
         //dictionaryImplimentation
@@ -95,7 +116,7 @@ class ViewController: UIViewController {
         //working with ARC
         strongRefenceCycleCaseSolvedByWeak()  //call this method just to check how it creates memory leak case by fooling ARC
         strongRefenceCycleCaseSolvedByUnowned()
-        strongRefenceCycleCaseSolvedByUnownedReferencesAndImplicitlyUnwrappedOptional()
+        //strongRefenceCycleCaseSolvedByUnownedReferencesAndImplicitlyUnwrappedOptional()
         strongRefenceCycleCaseSolvedWithClosure()
         
         //working with Optional Chaining
@@ -124,7 +145,7 @@ class ViewController: UIViewController {
  
     func workingWithTuples(){
         let (Value1,value2,value3) = ("abc", "pqr", "xyz") //getGasPrices() //call a method which returns mutiple values
-        println("\(Value1,value2,value3)")
+        print("\(Value1,value2,value3)")
     }
     
     func dynamicDictionaryAndLoops(){
@@ -142,30 +163,30 @@ class ViewController: UIViewController {
                 }
             }
         }
-        println("lagest number is \(largest)")
+        print("lagest number is \(largest)")
         
         var n = 2
         while n < 100 {  // while loop
             n = n * 2
         }
-        println("while- even numbers less than 100 are \(n)")
+        print("while- even numbers less than 100 are \(n)")
         
         var m = 2
-        do{
+        repeat{
             m = m * 2
         }while m < 100
-        println("do while- loop even numbers less than 100 are \(n)")
+        print("do while- loop even numbers less than 100 are \(n)")
         
         var firstForLoop = 0
         for i in 0..<3{
             firstForLoop+=i
         }
-        println("firstForLoop\(firstForLoop)")
+        print("firstForLoop\(firstForLoop)")
         //same works below
         for var i = 0; i<3; ++i{
             firstForLoop+=1
         }
-        println("firstForLoop\(firstForLoop)")
+        print("firstForLoop\(firstForLoop)")
     }
     
     func greet(name:String, day:String, year:String)->String{
@@ -220,42 +241,42 @@ class ViewController: UIViewController {
         let possibleString1: String? = "An optional string."
         
         if (possibleString1 != nil) {
-            println(possibleString1!) // requires an exclamation mark to access its value
+            print(possibleString1!) // requires an exclamation mark to access its value
             // prints "An optional string.
         }else{
-            
+            print("string is nil")
         }
         
         
-        let possibleString2 : String!="An implicit unwrapping optional string"
+        let possibleString2 : String! = "An implicit unwrapping optional string"
         if (possibleString2 != nil) {
-            println("possibleString \(possibleString2)")
+            print("possibleString \(possibleString2)")
             
         }
     }
     
     func charactorWorking(){
-        println("working with characters")
-        for character in "Dog!🐶" {
-            println(character)
+        print("working with characters")
+        for character in "Dog!🐶".characters {
+            print(character)
         }
         
         //counting characters
         let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
-        println("unusualMenagerie has \(countElements(unusualMenagerie)) characters")
+        print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
     }
     
     func rangeOperator(){
         //Closed Range Operator
         for index in 1...5 { //includes 1 and 5
-            println("\(index) times 5 is \(index * 5)")
+            print("\(index) times 5 is \(index * 5)")
         }
         
         //Half-Closed Range Operator
         let names = ["Anna", "Alex", "Brian", "Jack"]
         let count = names.count
         for i in 0..<count { //includes 0 not count
-            println("Person \(i + 1) is called \(names[i])")
+            print("Person \(i + 1) is called \(names[i])")
         }
     }
     
@@ -263,7 +284,7 @@ class ViewController: UIViewController {
         let quotation = "We're a lot alike, you and I."
         let sameQuotation = "We're a lot alike, you and I."
         if quotation == sameQuotation {
-            println("These two strings are considered equal")
+            print("These two strings are considered equal")
         }
        
         let romeoAndJuliet = [
@@ -286,7 +307,7 @@ class ViewController: UIViewController {
                 ++act1SceneCount
             }
         }
-        println("There are \(act1SceneCount) scenes in Act 1")
+        print("There are \(act1SceneCount) scenes in Act 1")
     
         
 }
@@ -294,8 +315,10 @@ class ViewController: UIViewController {
     func upperCaseStringTest(){
         let normal = "Could you help me, please?"
         let shouty = normal.uppercaseString
+        print(shouty)
         // shouty is equal to "COULD YOU HELP ME, PLEASE?"
         let whispered = normal.lowercaseString
+        print(whispered)
         // whispered is equal to "could you help me, please?”
         
     }
@@ -304,7 +327,7 @@ class ViewController: UIViewController {
     func arrayImplimentations(){
         var shoppingList1: [String] = ["Eggs", "Milk"]
         var shoppingList2 = ["Eggs", "Milk"]     //shorthand initialisation
-        println("The shopping list contains \(shoppingList2.count) items.")
+        print("The shopping list1 contains \(shoppingList1.count) items.", "The shopping list2 contains \(shoppingList2.count) items." )
         // prints "The shopping list contains 2 items.
         
         shoppingList2.append("Flour")
@@ -314,11 +337,11 @@ class ViewController: UIViewController {
         // shoppingList now contains 4 items”
         
         var firstItem = shoppingList2[0]
-         println("firstItem \(shoppingList2[0])")
+         print("firstItem \(shoppingList2[0])")
         
         
         shoppingList2[1...2] = ["Bananas", "Apples"]
-        println("The shopping list is. \(shoppingList2)")
+        print("The shopping list is. \(shoppingList2)")
         //replace 1st 2nd list items with "Bananas", "Apples"
         
         shoppingList2.insert("Maple Syrup", atIndex: 0)
@@ -337,19 +360,19 @@ class ViewController: UIViewController {
         
     
         if shoppingList2.isEmpty {
-            println("The shopping list is empty.")
+            print("The shopping list is empty.")
         } else {
-            println("The shopping list is not empty. List is \(shoppingList2)")
+            print("The shopping list is not empty. List is \(shoppingList2)")
         }
         // prints "The shopping list is not empty.
 
         
         for item in shoppingList2 {
-            println(item)
+            print(item)
         } //iterations
         
-        for (index, value) in enumerate(shoppingList2) {
-            println("Item \(index + 1): \(value)")
+        for (index, value) in shoppingList2.enumerate() {
+            print("Item \(index + 1): \(value)")
         }// used enumerate function
         
         var someInt = [Int]()
@@ -362,13 +385,13 @@ class ViewController: UIViewController {
         var someOtherInt = [String]()
         someOtherInt.append("someOtherString")
         
-        var threeDoubles = [Double](count: 3, repeatedValue: 0.0)
+        let threeDoubles = [Double](count: 3, repeatedValue: 0.0)
         // threeDoubles is of type Double[], and equals [0.0, 0.0, 0.0]
-        println("threeDoubles :\(threeDoubles)")
+        print("threeDoubles :\(threeDoubles)")
         
-        var anotherThreeDoubles = Array(count: 3, repeatedValue: 2.5)
+        let anotherThreeDoubles = Array(count: 3, repeatedValue: 2.5)
         // anotherThreeDoubles is inferred as Double[], and equals [2.5, 2.5, 2.5]
-        println("anotherThreeDoubles :\(anotherThreeDoubles)")
+        print("anotherThreeDoubles :\(anotherThreeDoubles)")
         
     }
     
@@ -380,41 +403,41 @@ class ViewController: UIViewController {
         var airports2 = ["TYO": "Tokyo", "DUB": "Dublin"]
        //  type inference.
         
-        println("The dictionary of airports contains \(airports.count) items.")
+        print("The dictionary of airports contains \(airports.count) items.")
         // prints "The dictionary of airports contains 2 items.
         
         airports2["LHR"] = "London"
         // the airports dictionary now contains 3 items”
         
-        println("Dictionary :\(airports2)")
+        print("Dictionary :\(airports2)")
         
         airports2["LHR"] = "London Heathrow"
         // the value for "LHR" has been changed to "London Heathrow”
         
-        println("Dictionary :\(airports2)")
+        print("Dictionary :\(airports2)")
         
         if let oldValue = airports2.updateValue("Dublin International", forKey: "DUB") {
-            println("The old value for DUB was \(oldValue).")
+            print("The old value for DUB was \(oldValue).")
         }// prints "The old value for DUB was Dublin.
         
-        println("Dictionary :\(airports2)")
+        print("Dictionary :\(airports2)")
         
         if let oldValue = airports2.updateValue("INDIRA GANDHI Airport", forKey: "IND") {
-            println("The old value for DUB was \(oldValue).")
+            print("The old value for DUB was \(oldValue).")
         }// prints nothing.
         
-         println("Dictionary :\(airports2)")
+         print("Dictionary :\(airports2)")
         
-        println("The dictionary of airports contains \(airports.count) items.")
+        print("The dictionary of airports contains \(airports.count) items.")
         // prints "The dictionary of airports contains 2 items.”
         
-        println("The dictionary of airports contains \(airports2.count) items.")
+        print("The dictionary of airports contains \(airports2.count) items.")
         // prints "The dictionary of airports contains 4 items.”
         
         if let airportName = airports["DUB"] { //a dictionary’s subscript returns an optional value of the dictionary’s value type
-            println("The name of the airport is \(airportName).")
+            print("The name of the airport is \(airportName).")
         } else {
-            println("That airport is not in the airports dictionary.")
+            print("That airport is not in the airports dictionary.")
         }
         
         airports["APL"] = "Apple International"
@@ -423,14 +446,14 @@ class ViewController: UIViewController {
         // APL has now been removed from the dictionary
         
         if let removedValue = airports.removeValueForKey("DUB") {
-            println("The removed airport's name is \(removedValue).")
+            print("The removed airport's name is \(removedValue).")
         } else {
-            println("The airports dictionary does not contain a value for DUB.")
+            print("The airports dictionary does not contain a value for DUB.")
         }
         // prints "The removed airport's name is Dublin International.
         
         for (airportCode, airportName) in airports2 {
-            println("\(airportCode): \(airportName)")
+            print("\(airportCode): \(airportName)")
         }
         
         //Iterate for each key in the dictionary
@@ -438,14 +461,14 @@ class ViewController: UIViewController {
         // LHR: London Heathrow”
         
         for airportCode in airports2.keys {
-            println("Airport code: \(airportCode)")
+            print("Airport code: \(airportCode)")
         }
         // Airport code: TYO
         // Airport code: LHR
         
         
         for airportName in airports2.values {
-            println("Airport name: \(airportName)")
+            print("Airport name: \(airportName)")
         }
         // Airport name: Tokyo
         // Airport name: London Heathrow”
@@ -465,7 +488,7 @@ class ViewController: UIViewController {
     
     func forLoopImplimentations(){
         for index in 1...5 { //closed Range
-            println("\(index) times 5 is \(index * 5)")
+            print("\(index) times 5 is \(index * 5)")
         }
         
         // 1 times 5 is 5
@@ -484,12 +507,12 @@ class ViewController: UIViewController {
         for _ in 1...power {
             answer *= base
         }
-        println("\(base) to the power of \(power) is \(answer)")
+        print("\(base) to the power of \(power) is \(answer)")
         // prints "3 to the power of 10 is 59049
         
         let names = ["Anna", "Alex", "Brian", "Jack"]
         for name in names {
-            println("Hello, \(name)!")
+            print("Hello, \(name)!")
         }
         // Hello, Anna!
         // Hello, Alex!
@@ -499,15 +522,15 @@ class ViewController: UIViewController {
         //iterate over a dictionary to access its key-value pairs.
         let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
         for (animalName, legCount) in numberOfLegs {
-            println("\(animalName)s have \(legCount) legs")
+            print("\(animalName)s have \(legCount) legs")
         }
         // spiders have 8 legs
         // ants have 6 legs
         // cats have 4 legs”
         
         //iterate over characters
-        for character in "Hello" {
-            println(character)
+        for character in "Hello".characters {
+            print(character)
         }
         // H
         // e
@@ -521,12 +544,12 @@ class ViewController: UIViewController {
         let someCharacter: Character = "e"
         switch someCharacter {
         case "a", "e", "i", "o", "u":
-            println("\(someCharacter) is a vowel")
+            print("\(someCharacter) is a vowel")
         case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
         "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
-            println("\(someCharacter) is a consonant")
+            print("\(someCharacter) is a consonant")
         default:
-            println("\(someCharacter) is not a vowel or a consonant")
+            print("\(someCharacter) is not a vowel or a consonant")
         }
         // prints "e is a vowel”
         
@@ -551,7 +574,7 @@ class ViewController: UIViewController {
         default:
             naturalCount = "millions and millions of"
         }
-        println("There are \(naturalCount) \(countedThings).")
+        print("There are \(naturalCount) \(countedThings).")
         // prints "There are millions and millions of stars in the Milky Way.
 
         
@@ -559,15 +582,15 @@ class ViewController: UIViewController {
         let somePoint = (1, 1)
         switch somePoint {
         case (0, 0):
-            println("(0, 0) is at the origin")
+            print("(0, 0) is at the origin")
         case (_, 0):
-            println("(\(somePoint.0), 0) is on the x-axis")
+            print("(\(somePoint.0), 0) is on the x-axis")
         case (0, _):
-            println("(0, \(somePoint.1)) is on the y-axis")
+            print("(0, \(somePoint.1)) is on the y-axis")
         case (-2...2, -2...2):
-            println("(\(somePoint.0), \(somePoint.1)) is inside the box")
+            print("(\(somePoint.0), \(somePoint.1)) is inside the box")
         default:
-            println("(\(somePoint.0), \(somePoint.1)) is outside of the box")
+            print("(\(somePoint.0), \(somePoint.1)) is outside of the box")
         }
         // prints "(1, 1) is inside the box”
         
@@ -576,9 +599,9 @@ class ViewController: UIViewController {
 //        case (let x, 0):
 //            println("on the x-axis with an x value of \(x)")
         case (0, let y):
-            println("on the y-axis with a y value of \(y)")
+            print("on the y-axis with a y value of \(y)")
         case let (x, y):
-            println("somewhere else at (\(x), \(y))")
+            print("somewhere else at (\(x), \(y))")
         }
         
         
@@ -586,11 +609,11 @@ class ViewController: UIViewController {
         let yetAnotherPoint = (1, -1)
         switch yetAnotherPoint {
         case let (x, y) where x == y:
-            println("(\(x), \(y)) is on the line x == y")
+            print("(\(x), \(y)) is on the line x == y")
         case let (x, y) where x == -y:
-            println("(\(x), \(y)) is on the line x == -y")
+            print("(\(x), \(y)) is on the line x == -y")
         case let (x, y):
-            println("(\(x), \(y)) is just some arbitrary point")
+            print("(\(x), \(y)) is just some arbitrary point")
         }
 
     }
@@ -599,7 +622,7 @@ class ViewController: UIViewController {
         //continue
         let puzzleInput = "great minds think alike"
         var puzzleOutput = ""
-        for character in puzzleInput {
+        for character in puzzleInput.characters {
             switch character {
             case "a", "e", "i", "o", "u", " ":
                 continue
@@ -607,7 +630,7 @@ class ViewController: UIViewController {
                 puzzleOutput.append(character)
             }
         }
-        println(puzzleOutput)
+        print(puzzleOutput)
         // prints "grtmndsthnklk”
         
         //break
@@ -626,9 +649,9 @@ class ViewController: UIViewController {
             break
         }
         if let integerValue = possibleIntegerValue {
-            println("The integer value of \(numberSymbol) is \(integerValue).")
+            print("The integer value of \(numberSymbol) is \(integerValue).")
         } else {
-            println("An integer value could not be found for \(numberSymbol).")
+            print("An integer value could not be found for \(numberSymbol).")
         }
         // prints "The integer value of 三 is 3.
         
@@ -644,7 +667,7 @@ class ViewController: UIViewController {
         default:
             description += " an integer."
         }
-        println(description)
+        print(description)
         // prints "The number 5 is a prime number, and also an integer.
         
     }
@@ -655,14 +678,14 @@ class ViewController: UIViewController {
             let greeting = "Hello, " + personName + "!"
             return greeting
         }
-        println(sayHello("Anna"))
+        print(sayHello("Anna"))
         // prints "Hello again, Anna!”
         
         //MUTTIPLE PARAMETERS
         func halfOpenRangeLength(start: Int, end: Int) -> Int {
             return end - start
         }
-        println(halfOpenRangeLength(1, 10))
+        print(halfOpenRangeLength(1, end: 10))
         // prints "9”
         
         
@@ -670,19 +693,19 @@ class ViewController: UIViewController {
         func sayHelloWorld() -> String {
             return "hello, world"
         }
-        println(sayHelloWorld())
+        print(sayHelloWorld())
         // prints "hello, world
         
         //Functions Without Return Values
         func sayGoodbye(personName: String) {
-            println("Goodbye, \(personName)!")
+            print("Goodbye, \(personName)!")
         }
         sayGoodbye("Dave")
         // prints "Goodbye, Dave!
         
         func printAndCount(stringToPrint: String) -> Int {
-            println(stringToPrint)
-            return countElements(stringToPrint)
+            print(stringToPrint)
+            return stringToPrint.characters.count
         }
         func printWithoutCounting(stringToPrint: String) {
             printAndCount(stringToPrint)
@@ -696,7 +719,7 @@ class ViewController: UIViewController {
         //multiple return type
         func count(string: String) -> (vowels: Int, consonants: Int, others: Int) {
             var vowels = 0, consonants = 0, others = 0
-            for character in string {
+            for character in string.characters {
                 switch String(character).lowercaseString {
                 case "a", "e", "i", "o", "u":
                     ++vowels
@@ -711,8 +734,8 @@ class ViewController: UIViewController {
         }
         
         let total = count("some arbitrary string!")
-        println("\(total.vowels) vowels and \(total.consonants) consonants")
-        println("others \(total.others)")
+        print("\(total.vowels) vowels and \(total.consonants) consonants")
+        print("others \(total.others)")
         // prints "6 vowels and 13 consonants
         
         //External parameter name
@@ -734,8 +757,8 @@ class ViewController: UIViewController {
         //you do not need to write the same name twice for that parameter. Instead, write the name once, and prefix the name with a hash symbol (#). This tells Swift to use that name as both the local parameter name and the external parameter name.
         //The automatic external name
         
-        func containsCharacter(#string: String, #characterToFind: Character) -> Bool? {
-            for character in string {
+        func containsCharacter(string string: String, characterToFind: Character) -> Bool? {
+            for character in string.characters {
                 if character == characterToFind {
                     return true
                 }
@@ -744,7 +767,7 @@ class ViewController: UIViewController {
         }
         
         if let containsAVee = containsCharacter(string: "aardvark", characterToFind: "v") {
-            println("containsCharacter charactor \"v\"")
+            print("containsCharacter charactor \"v\"")
         }
         // containsAVee equals true, because "aardvark" contains a "v”
         
@@ -766,7 +789,7 @@ class ViewController: UIViewController {
         func joinTwoStrings(s1: String, s2: String, joiner: String = " ") -> String {
             return s1 + joiner + s2
         }
-        joinTwoStrings("hello", "world", joiner: "-") //joiner is auto extarnal parameter
+        joinTwoStrings("hello", s2: "world", joiner: "-") //joiner is auto extarnal parameter
         // returns "hello-world”
         
         
@@ -786,26 +809,26 @@ class ViewController: UIViewController {
         // returns 3.0, which is the arithmetic mean of these five numbers
         arithmeticMean(3, 8, 19)
         // returns 10.0, which is the arithmetic mean of these three numbers
-        println("arithmeticMean \(arithmeticMean())")
+        print("arithmeticMean \(arithmeticMean())")
         //another example
-        println("sum of 2 numbers are \(sumof(5,10))" )
-        println("sum of 3 numbers are \(sumof(5,25,10))")
+        print("sum of 2 numbers are \(sumof(5,10))" )
+        print("sum of 3 numbers are \(sumof(5,25,10))")
         
         
         //Constant and Variable Parameters:
         //Function parameters are constants by default. if want to modify value use var
         func alignRight(var string: String, count: Int, pad: Character) -> String {
-            let amountToPad = count - countElements(string)
+            let amountToPad = count - string.characters.count
             for _ in 1...amountToPad {
                 string = String(pad) + string
             }
             return string
         }
         let originalString = "hello"
-        let paddedString = alignRight(originalString, 10, "-")
+        let paddedString = alignRight(originalString, count: 10, pad: "-")
         // paddedString is equal to "-----hello"
         // originalString is still equal to "hello
-        println("Padded string \(paddedString) original string \(originalString)")
+        print("Padded string \(paddedString) original string \(originalString)")
 
         
         //InOut parameters
@@ -817,8 +840,8 @@ class ViewController: UIViewController {
         }
         var someInt = 3
         var anotherInt = 107
-        swapTwoInts(&someInt, &anotherInt)
-        println("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+        swapTwoInts(&someInt, b: &anotherInt)
+        print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
         // prints "someInt is now 107, and anotherInt is now 3
     }
     
@@ -831,14 +854,14 @@ class ViewController: UIViewController {
         }
         
         func printHelloWorld() {
-            println("hello, world")
+            print("hello, world")
         }
         //Define a variable called mathFunction, which has a type of ‘a function that takes two Int values, and returns an Int value.’ Set this new variable to refer to the function called addTwoInts.
         var mathFunction: (Int, Int) -> Int = addTwoInts
-        println("Result: \(mathFunction(2, 3))")
+        print("Result: \(mathFunction(2, 3))")
         // prints "Result: 5”
         mathFunction = multiplyTwoInts
-        println("Result: \(mathFunction(2, 3))")
+        print("Result: \(mathFunction(2, 3))")
         // prints "Result: 6”
         
         //As with any other type, you can leave it to Swift to infer the function type when you assign a function to a constant or variable:
@@ -847,9 +870,9 @@ class ViewController: UIViewController {
         
         //Function Types as Parameter Types
         func printMathResult(mathFunction: (Int, Int) -> Int, a: Int, b: Int) {
-            println("Result: \(mathFunction(a, b))")
+            print("Result: \(mathFunction(a, b))")
         }
-        printMathResult(addTwoInts, 3, 5)
+        printMathResult(addTwoInts, a: 3, b: 5)
         // prints "Result: 8”
         
         //Function Types as Return Types
@@ -873,16 +896,16 @@ class ViewController: UIViewController {
         }
         var currentValue = 3
         let moveNearerToZero = chooseStepFunction(currentValue > 0)
-        println("currentValue is now \(moveNearerToZero)")
+        print("currentValue is now \(moveNearerToZero)")
         // moveNearerToZero now refers to the stepBackward() function
         
-        println("Counting to zero:")
+        print("Counting to zero:")
         // Counting to zero:
         while currentValue != 0 {
-            println("\(currentValue)... ")
+            print("\(currentValue)... ")
             currentValue = moveNearerToZero(currentValue)
         }
-        println("zero!")
+        print("zero!")
         // 3...
         // 2...
         // 1...
@@ -900,10 +923,10 @@ class ViewController: UIViewController {
         let moveNearerToZero = chooseStepFunction(currentValue > 0)
         // moveNearerToZero now refers to the nested stepForward() function
         while currentValue != 0 {
-            println("\(currentValue)... ")
+            print("\(currentValue)... ")
             currentValue = moveNearerToZero(currentValue)
         }
-        println("zero!")
+        print("zero!")
         // -4...
         // -3...
         // -2...
@@ -913,27 +936,45 @@ class ViewController: UIViewController {
     
     //Closures
     func closureImplimentations(){
+        //Some reference : 
+        //http://fuckingclosuresyntax.com/
+        //http://www.tutorialspoint.com/swift/swift_closures.htm
+        //https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html
+        
+        //void closure
+        let studname = { print("Welcome to Swift Closures") }
+        studname()
+        
+        //return type closure
+        let divide = {(val1: Int, val2: Int) -> Int in
+            return val1 / val2
+        }
+        let result = divide(200, 20)
+        print (result)
+        
+        
+        
         //named fuction as closure
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
         func backwards(s1: String, s2: String) -> Bool {
             return s1 > s2
         }
-        var reversed = sorted(names, backwards) //backwards is sorting closure here
-        println("reversed sorted aray:\(reversed)")
+        var reversed = names.sort(backwards) //backwards is sorting closure here
+        print("reversed sorted aray:\(reversed)")
         //reversed sorted aray: ["Ewa", "Daniella", "Chris", "Barry", "Alex"]
         
         //inline closure
         //reversed = sort(names, { }) //inline closure
-        reversed = sorted(names, { (s1: String, s2: String) -> Bool in
+        reversed = names.sort({ (s1: String, s2: String) -> Bool in
             return s1 > s2    //body
             })
         //reversed = sort(names, { (s1: String, s2: String) -> Bool in return s1 > s2})  //can br wriitten in one line
-        println("reversed sorted aray:\(reversed)")
+        print("reversed sorted aray:\(reversed)")
         //reversed sorted aray: ["Ewa", "Daniella", "Chris", "Barry", "Alex"]
         
         
         //Inferring Type From Context
-        reversed = sorted(names, { s1, s2 in return s1 > s2})
+        reversed = names.sort({ s1, s2 in return s1 > s2})
         //swift knows expected  function of type (String, String) -> Bool
         //Swift can infer the types of its parameters and the type of the value it returns
 
@@ -945,7 +986,12 @@ class ViewController: UIViewController {
         //Shorthand Argument Names
         //If you use these shorthand argument names within your closure expression, you can omit the closure’s argument list from its definition,
         //reversed = sorted(names, { $0 > $1 } ) //because of ambiguity and unclear way it is removed from swift
-        reversed = sorted(names, { return $0 > $1 } ) //can use like this
+        
+        var shorthand: (String, String) -> String
+        shorthand = { $1 }
+        print(shorthand("100", "200"))
+        
+        reversed = names.sort({ return $0 > $1 } ) //can use like this
         //Here, $0 and $1 refer to the closure’s first and second String arguments.
         
         
@@ -954,7 +1000,7 @@ class ViewController: UIViewController {
         
         
         //Trailing closure
-        reversed = sorted(names) {return $0 > $1 }
+        reversed = names.sort {return $0 > $1 }
         //another example of trailing closure
         trailingClosureExample()
         
@@ -968,7 +1014,7 @@ class ViewController: UIViewController {
             5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
         ]
         let numbers = [16, 58, 510]
-        println("numbers:\(numbers)")
+        print("numbers:\(numbers)")
         let strings = numbers.map { // trailing closure without paranthesis bcz accepts only closure as argument
             (var number) -> String in
             var output = ""
@@ -980,7 +1026,7 @@ class ViewController: UIViewController {
         }
         // strings is inferred to be of type String[]
         // its value is ["OneSix", "FiveEight", "FiveOneZero"]
-        println("output:\(strings)")
+        print("output:\(strings)")
         /* NOTE:
         The call to the digitNames dictionary’s subscript is followed by an exclamation mark (!), because dictionary subscripts return an optional value to indicate that the dictionary lookup can fail if the key does not exist. In the example above, it is guaranteed that number % 10 will always be a valid subscript key for the digitNames dictionary, and so an exclamation mark is used to force-unwrap the String value stored in the subscript’s optional return value.
         */
@@ -1001,16 +1047,16 @@ class ViewController: UIViewController {
         
         let incrementByTen = makeIncrementor(forIncrement: 10)
         
-        println("incrementByTen() \(incrementByTen())")
+        print("incrementByTen() \(incrementByTen())")
         // returns a value of 10
-        println("incrementByTen() \(incrementByTen())")
+        print("incrementByTen() \(incrementByTen())")
         // returns a value of 20
-        println("incrementByTen() \(incrementByTen())")
+        print("incrementByTen() \(incrementByTen())")
         // returns a value of 30
         let incrementBySeven = makeIncrementor(forIncrement: 7)
-        println("incrementByTen() \(incrementBySeven())")
+        print("incrementByTen() \(incrementBySeven())")
         // returns a value of 7
-         println("incrementByTen() \(incrementByTen())")
+         print("incrementByTen() \(incrementByTen())")
         // returns a value of 40
     }
     
@@ -1034,13 +1080,13 @@ class ViewController: UIViewController {
         let direction = CompassPoint.West
         switch  direction  {
         case .North:
-            println("Lots of planets have a north")
+            print("Lots of planets have a north")
         case .South:
-            println("Watch out for penguins")
+            print("Watch out for penguins")
         case .East:
-            println("Where the sun rises")
+            print("Where the sun rises")
         case .West:
-            println("Where the skies are blue")
+            print("Where the skies are blue")
         }
         // prints "Watch out for penguins
         
@@ -1048,9 +1094,9 @@ class ViewController: UIViewController {
         let somePlanet = Planet.Earth
         switch somePlanet {
         case .Earth:
-            println("Mostly harmless")
+            print("Mostly harmless")
         default:
-            println("Not a safe place for humans")
+            print("Not a safe place for humans")
         }
         // prints "Mostly harmless”
 
@@ -1080,6 +1126,7 @@ class ViewController: UIViewController {
         enumerationWithFunction()
         
         //enumeration with structure
+        enumerationWithStructure()
     }
     
     func enumerationWithAssociationValues1(){
@@ -1093,9 +1140,9 @@ class ViewController: UIViewController {
         
         switch productBarcode {
         case .UPCA(let numberSystem, let identifier, let check):
-            println("UPC-A with value of \(numberSystem), \(identifier), \(check).")
+            print("UPC-A with value of \(numberSystem), \(identifier), \(check).")
         case .QRCode(let productCode):
-            println("QR code with value of \(productCode).")
+            print("QR code with value of \(productCode).")
         }
         // prints "QR code with value of ABCDEFGHIJKLMNOP.”
         
@@ -1103,9 +1150,9 @@ class ViewController: UIViewController {
         //can be written as
         switch productBarcode {
         case let .UPCA(numberSystem, identifier, check):
-            println("UPC-A with value of \(numberSystem), \(identifier), \(check).")
+            print("UPC-A with value of \(numberSystem), \(identifier), \(check).")
         case let .QRCode(productCode):
-            println("QR code with value of \(productCode).")
+            print("QR code with value of \(productCode).")
         }
         // prints "QR code with value of ABCDEFGHIJKLMNOP.
     }
@@ -1153,7 +1200,7 @@ class ViewController: UIViewController {
         
         if let convertedRank = Rank(rawValue: 3) {
             let threeDescription = convertedRank.simpleDescription()
-            println("threeDescription:\(threeDescription)")
+            print("threeDescription:\(threeDescription)")
         }
        
     }
@@ -1206,7 +1253,7 @@ class ViewController: UIViewController {
         let threeOfSpades = Card(rank: .Three, suit: .Spades)
         let threeOfSpadesDescription = threeOfSpades.simpleDescription()
         
-        println("threeOfSpadesDescription \(threeOfSpadesDescription)")
+        print("threeOfSpadesDescription \(threeOfSpadesDescription)")
     }
     
     func workingWithStoredProperties(){
@@ -1254,7 +1301,7 @@ class ViewController: UIViewController {
         manager.data.append("Some more data")
         // the DataImporter instance for the importer property has not yet been created
         
-        println(manager.importer.fileName)
+        print(manager.importer.fileName)
         // the DataImporter instance for the importer property has now been created
         // prints "data.txt”
     }
@@ -1288,7 +1335,7 @@ class ViewController: UIViewController {
             size: Size(width: 10.0, height: 10.0))
         let initialSquareCenter = square.center
         square.center = Point(x: 15.0, y: 15.0)
-        println("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+        print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
         // prints "square.origin is now at (10.0, 10.0)”
         
         //Read-Only Computed Properties
@@ -1304,7 +1351,7 @@ class ViewController: UIViewController {
             }
         }
         let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
-        println("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+        print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
         // prints "the volume of fourByFiveByTwo is 40.0”
     }
     
@@ -1322,7 +1369,7 @@ class ViewController: UIViewController {
         }
     }
     class SomeClass {
-        class var computedTypeProperty: Int {
+        static var computedTypeProperty: Int {
         return 30
         }
     }
@@ -1333,13 +1380,13 @@ class ViewController: UIViewController {
        
         
         //Querying and Setting Type Properties
-        println(SomeClass.computedTypeProperty)
-        // prints "42"
+        print(SomeClass.computedTypeProperty)
+        // prints "30"
         
-        println(SomeStructure.storedTypeProperty)
+        print(SomeStructure.storedTypeProperty)
         // prints "Some value."
         SomeStructure.storedTypeProperty = "Another value."
-        println(SomeStructure.storedTypeProperty)
+        print(SomeStructure.storedTypeProperty)
         // prints "Another value.”
     }
     
@@ -1347,11 +1394,11 @@ class ViewController: UIViewController {
     class StepCounter {
         var totalSteps: Int = 0 {
         willSet(newTotalSteps) {
-            println("About to set totalSteps to \(newTotalSteps)")
+            print("About to set totalSteps to \(newTotalSteps)")
         }
         didSet {
             if totalSteps > oldValue  {
-                println("Added \(totalSteps - oldValue) steps")
+                print("Added \(totalSteps - oldValue) steps")
             }
         }
         }
@@ -1393,9 +1440,9 @@ class ViewController: UIViewController {
         var rightChannel = AudioChannel()
        //If you set the currentLevel of the left channel to 7, you can see that the maxInputLevelForAllChannels type property is updated to equal 7:
         leftChannel.currentLevel = 7
-        println(leftChannel.currentLevel)
+        print(leftChannel.currentLevel)
         // prints "7"
-        println(AudioChannel.maxInputLevelForAllChannels)
+        print(AudioChannel.maxInputLevelForAllChannels)
         // prints "7"
        
     }
@@ -1461,14 +1508,14 @@ class ViewController: UIViewController {
     func concludedConceptOfMethods(){
         var player = Player(name: "Argyrios")
         player.completedLevel(1)
-        println("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+        print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
         // prints "highest unlocked level is now 2
         
         player = Player(name: "Beto")
         if player.tracker.advanceToLevel(6) {
-            println("player is now on level 6")
+            print("player is now on level 6")
         } else {
-            println("level 6 has not yet been unlocked")
+            print("level 6 has not yet been unlocked")
         }
         // prints "level 6 has not yet been unlocked”
     }
@@ -1478,16 +1525,16 @@ class ViewController: UIViewController {
         //instance Methods
         let counter = Counter()
         // the initial counter value is 0
-        println("the initial counter value is \(counter.count)")
+        print("the initial counter value is \(counter.count)")
         counter.increment()
         // the counter's value is now 1
-        println("the counter's value is now \(counter.count)")
+        print("the counter's value is now \(counter.count)")
         counter.incrementBy(5)
         // the counter's value is now 6
-        println("the counter's value is now \(counter.count)")
+        print("the counter's value is now \(counter.count)")
         counter.reset()
         // the counter's value is now 0
-        println("the counter's value is now \(counter.count)")
+        print("the counter's value is now \(counter.count)")
         counter.incrementBy(5, numberOfTimes: 3)
         // counter value is now 15
         
@@ -1502,7 +1549,7 @@ class ViewController: UIViewController {
         }
         var somePoint = Point(x: 1.0, y: 1.0)
         somePoint.moveByX(2.0, y: 3.0)
-        println("The point is now at (\(somePoint.x), \(somePoint.y))")
+        print("The point is now at (\(somePoint.x), \(somePoint.y))")
         // prints "The point is now at (3.0, 4.0)
 
 
@@ -1576,7 +1623,7 @@ class ViewController: UIViewController {
             }
         }
         let threeTimesTable = TimesTable(multiplier: 3)
-        println("six times three is \(threeTimesTable[6])")
+        print("six times three is \(threeTimesTable[6])")
         // prints "six times three is 18”
         
         //subscription with multiple values
@@ -1662,27 +1709,27 @@ class ViewController: UIViewController {
         //base class inherited by subclass
         let someVehicle = Vehicle()
         let bicycle = Bicycle()
-        println("Bicycle: \(bicycle.description())")
+        print("Bicycle: \(bicycle.description())")
         // Bicycle: 2 wheels; up to 1 passengers
         let tandem = Tandem()
-        println("Tandem: \(tandem.description())")
+        print("Tandem: \(tandem.description())")
         // Tandem: 2 wheels; up to 2 passengers
 
         //Overriding method description() in class "Car"
         let car = Car()
-        println("Car: \(car.description())")
+        print("Car: \(car.description())")
         // Car: 4 wheels; up to 5 passengers; traveling at 0.0 mph
 
         //Overriding property speed by using getter and setter
         let limitedCar = SpeedLimitedCar()
         limitedCar.speed = 60.0
-        println("SpeedLimitedCar: \(limitedCar.description())")
+        print("SpeedLimitedCar: \(limitedCar.description())")
         // SpeedLimitedCar: 4 wheels; up to 5 passengers; traveling at 40.0 mph
 
         //Overriding Property observer
         let automatic = AutomaticCar()
         automatic.speed = 35.0
-        println("AutomaticCar: \(automatic.description())")
+        print("AutomaticCar: \(automatic.description())")
         // AutomaticCar: 4 wheels; up to 5 passengers; traveling at 35.0 mph in gear 4
     }
     
@@ -1740,7 +1787,6 @@ class ViewController: UIViewController {
             self.quantity = quantity
             super.init(name: name)
             //super.name = "abcd"
-            
         }
         convenience override init(name: String) { //convenience initializer
             self.init(name: name, quantity: 1)
@@ -1778,7 +1824,7 @@ class ViewController: UIViewController {
         breakfastList[0].name = "Orange juice"
         breakfastList[0].purchased = true
         for item in breakfastList {
-            println(item.description)
+            print(item.description)
         }
         // 1 x orange juice ✔
         // 1 x bacon ✘
@@ -1807,9 +1853,9 @@ class ViewController: UIViewController {
    
     func settingDefaultPropertyValueWithClosure(){
         let board = Checkerboard()
-        println(board.squareIsBlackAtRow(0, column: 1))
+        print(board.squareIsBlackAtRow(0, column: 1))
         // prints "true"
-        println(board.squareIsBlackAtRow(9, column: 9))
+        print(board.squareIsBlackAtRow(9, column: 9))
         // prints "false”
     }
     
@@ -1844,22 +1890,22 @@ class ViewController: UIViewController {
     
     func workingWithDeInitializer(){
         var playerOne: GamePlayer? = GamePlayer(coins: 100)
-        println("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
+        print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
         // prints "A new player has joined the game with 100 coins"
-        println("There are now \(Bank.coinsInBank) coins left in the bank")
+        print("There are now \(Bank.coinsInBank) coins left in the bank")
         // prints "There are now 9900 coins left in the bank
         
         playerOne!.winCoins(2_000)
-        println("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
+        print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
         // prints "PlayerOne won 2000 coins & now has 2100 coins"
-        println("The bank now only has \(Bank.coinsInBank) coins left")
+        print("The bank now only has \(Bank.coinsInBank) coins left")
         // prints "The bank now only has 7900 coins left
         
         //Here, the player has won 2,000 coins. The player’s purse now contains 2,100 coins, and the bank has only 7,900 coins left.
         playerOne = nil
-        println("PlayerOne has left the game")
+        print("PlayerOne has left the game")
         // prints "PlayerOne has left the game"
-        println("The bank now has \(Bank.coinsInBank) coins")
+        print("The bank now has \(Bank.coinsInBank) coins")
         // prints "The bank now has 10000 coins
 
     }
@@ -1868,10 +1914,10 @@ class ViewController: UIViewController {
         let name: String
         init(name: String) {
             self.name = name
-            println("\(name) is being initialized")
+            print("\(name) is being initialized")
         }
         deinit {
-            println("\(name) is being deinitialized")
+            print("\(name) is being deinitialized")
         }
     }
 
@@ -1901,7 +1947,7 @@ class ViewController: UIViewController {
         let name: String
         init(name: String) { self.name = name }
         var apartment: Apartment?
-        deinit { println("\(name) is being deinitialized") }
+        deinit { print("\(name) is being deinitialized") }
     }
     
     class Apartment {
@@ -1909,7 +1955,7 @@ class ViewController: UIViewController {
         init(number: Int) { self.number = number }
         //var tenant: PersonIndividual?
         weak var tenant: PersonIndividual?  //solution to resolve strongRefenceCycleCase
-        deinit { println("Apartment #\(number) is being deinitialized") }
+        deinit { print("Apartment #\(number) is being deinitialized") }
     }
 
     func strongRefenceCycleCaseSolvedByWeak(){
@@ -1938,7 +1984,7 @@ class ViewController: UIViewController {
         init(name: String) {
             self.name = name
         }
-        deinit { println("\(name) is being deinitialized") }
+        deinit { print("\(name) is being deinitialized") }
     }
     
     class CreditCard {
@@ -1948,7 +1994,7 @@ class ViewController: UIViewController {
             self.number = number
             self.customer = customer
         }
-        deinit { println("Card #\(number) is being deinitialized") }
+        deinit { print("Card #\(number) is being deinitialized") }
     }
 
     
@@ -1966,34 +2012,34 @@ class ViewController: UIViewController {
     }
     
     //following Country and City is related strongRefenceCycleCaseSolvedByUnownedReferencesAndImplicitlyUnwrappedOptional ()
-    class Country {
-        let name: String
-        let capitalCity: City!  // <--- Implicitly Unwrapped optional propertiy initialized “nil”
-        init(name: String, capitalName: String) {
-            self.name = name
-            self.capitalCity = City(name: capitalName, country: self)    // <---- Note here, remember  Two-Phase Initialization. country is not initialiezed completely and you are accessing “self” instance
-        }
-    }
-    
-        //here  due to Implicitly Unwrapped optional propertiy capitalCity just by taking  name  and initially taking self.capitalCity as nil it will initialize Country and after initialization it gives reference to self.capitalCity.
-        
-        class City {
-            let name: String
-            unowned let country: Country
-            init(name: String, country: Country) {
-                self.name = name
-                self.country = country
-            }
-        }
-
-
-    func strongRefenceCycleCaseSolvedByUnownedReferencesAndImplicitlyUnwrappedOptional (){ //name is bit long but self explaining
-        var country = Country(name: "Canada", capitalName: "Ottawa")  //<---you are able to initialized
-        println("\(country.name)'s capital city is called \(country.capitalCity.name)")
-        // prints "Canada's capital city is called Ottawa”
-       // NOTE: If you don’t take  capitalCity: City!  as  Implicitly Unwrapped optional propertiy there could be crash problem. beacouse we have to satisfy two-phase class initializer requirements.
-
-    }
+//    class Country {
+//        let name: String
+//        let capitalCity: City!  // <--- Implicitly Unwrapped optional propertiy initialized “nil”
+//        init(name: String, capitalName: String) {
+//            self.name = name
+//            self.capitalCity = City(name: capitalName, country: self)    // <---- Note here, remember  Two-Phase Initialization. country is not initialiezed completely and you are accessing “self” instance
+//        }
+//    }
+//    
+//        //here  due to Implicitly Unwrapped optional propertiy capitalCity just by taking  name  and initially taking self.capitalCity as nil it will initialize Country and after initialization it gives reference to self.capitalCity.
+//        
+//        class City {
+//            let name: String
+//            unowned let country: Country
+//            init(name: String, country: Country) {
+//                self.name = name
+//                self.country = country
+//            }
+//        }
+//
+//
+//    func strongRefenceCycleCaseSolvedByUnownedReferencesAndImplicitlyUnwrappedOptional (){ //name is bit long but self explaining
+//        let country = Country(name: "Canada", capitalName: "Ottawa")  //<---you are able to initialized
+//        print("\(country.name)'s capital city is called \(country.capitalCity.name)")
+//        // prints "Canada's capital city is called Ottawa”
+//       // NOTE: If you don’t take  capitalCity: City!  as  Implicitly Unwrapped optional propertiy there could be crash problem. beacouse we have to satisfy two-phase class initializer requirements.
+//
+//    }
     
     //following HTMLElement class is related to
     class HTMLElement {
@@ -2016,14 +2062,14 @@ class ViewController: UIViewController {
         }
         
         deinit {
-            println("\(name) is being deinitialized")
+            print("\(name) is being deinitialized")
         }
         
     }
     
     func strongRefenceCycleCaseSolvedWithClosure(){
         var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
-        println(paragraph!.asHTML())
+        print(paragraph!.asHTML())
         // prints "<p>hello, world</p>”
         
         paragraph = nil //neither the HTMLElement instance nor its closure are deallocated,  if you dont use capture list in closure with unowned keyowrd followed by self instance which is to be caputred
@@ -2042,7 +2088,7 @@ class ViewController: UIViewController {
             return rooms[i]
         }
         func printNumberOfRooms() {
-            println("The number of rooms is \(numberOfRooms)")
+            print("The number of rooms is \(numberOfRooms)")
         }
         var address: Address?
     }
@@ -2071,27 +2117,27 @@ class ViewController: UIViewController {
         //Calling Properties Through Optional Chaining
         let john = PersonAny()
         if let roomCount = john.residence?.numberOfRooms {
-            println("John's residence has \(roomCount) room(s).")
+            print("John's residence has \(roomCount) room(s).")
         } else {
-            println("Unable to retrieve the number of rooms.")
+            print("Unable to retrieve the number of rooms.")
         }
         // prints "Unable to retrieve the number of rooms.”
         
         
         //Calling Methods Through Optional Chaining
         if (john.residence?.printNumberOfRooms() != nil) { //<--- returns optional Void
-            println("It was possible to print the number of rooms.")
+            print("It was possible to print the number of rooms.")
         } else {
-            println("It was not possible to print the number of rooms.")
+            print("It was not possible to print the number of rooms.")
         }
         // prints "It was not possible to print the number of rooms.”
         
         
         //Calling Subscripts Through Optional Chaining
         if let firstRoomName = john.residence?[0].name { // returns optional string
-            println("The first room name is \(firstRoomName).")
+            print("The first room name is \(firstRoomName).")
         } else {
-            println("Unable to retrieve the first room name.")
+            print("Unable to retrieve the first room name.")
         }
         // prints "Unable to retrieve the first room name.”
         let johnsHouse = Residence()
@@ -2100,18 +2146,18 @@ class ViewController: UIViewController {
         john.residence = johnsHouse
         
         if let firstRoomName = john.residence?[0].name {
-            println("The first room name is \(firstRoomName).")
+            print("The first room name is \(firstRoomName).")
         } else {
-            println("Unable to retrieve the first room name.")
+            print("Unable to retrieve the first room name.")
         }
         // prints "The first room name is Living Room.”
         
         
         //Linking Multiple Levels of Chaining
         if let johnsStreet = john.residence?.address?.street { // <---return Optional String
-            println("John's street name is \(johnsStreet).")
+            print("John's street name is \(johnsStreet).")
         } else {
-            println("Unable to retrieve the address.")
+            print("Unable to retrieve the address.")
         }
         // prints "Unable to retrieve the address.
         let johnsAddress = Address()
@@ -2120,21 +2166,21 @@ class ViewController: UIViewController {
         john.residence!.address = johnsAddress
         
         if let johnsStreet = john.residence?.address?.street {
-            println("John's street name is \(johnsStreet).")
+            print("John's street name is \(johnsStreet).")
         } else {
-            println("Unable to retrieve the address.")
+            print("Unable to retrieve the address.")
         }
         // prints "John's street name is Laurel Street.”
         
         //Chaining on Methods With Optional Return Values
         if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {//<--- returns Optional string
-            println("John's building identifier is \(buildingIdentifier).")
+            print("John's building identifier is \(buildingIdentifier).")
         }
         // prints "John's building identifier is The Larches.”
         
         //If you want to perform further optional chaining on this method’s return value, place the optional chaining question mark after the method’s parentheses:
         if let upper = john.residence?.address?.buildingIdentifier()?.uppercaseString {
-            println("John's uppercase building identifier is \(upper).")
+            print("John's uppercase building identifier is \(upper).")
         }
         // prints "John's uppercase building identifier is THE LARCHES.”
     }
@@ -2184,16 +2230,16 @@ class ViewController: UIViewController {
                 ++songCount
             }
         }
-        println("Media library contains \(movieCount) movies and \(songCount) songs")
+        print("Media library contains \(movieCount) movies and \(songCount) songs")
         // prints "Media library contains 2 movies and 3 songs”
         
         
         //Look how Downcasting is done in swift using "as" operator (if you use as? it returns type optional value)
         for item in library {
             if let movie = item as? Movie { //The result of item as Movie is of type Movie?, or “optional Movie”
-                println("Movie: '\(movie.name)', dir. \(movie.director)") //if successful can access as native instance
+                print("Movie: '\(movie.name)', dir. \(movie.director)") //if successful can access as native instance
             } else if let song = item as? Song {
-                println("Song: '\(song.name)', by \(song.artist)")
+                print("Song: '\(song.name)', by \(song.artist)")
             }
         }
         // Movie: 'Casablanca', dir. Michael Curtiz
@@ -2212,15 +2258,15 @@ class ViewController: UIViewController {
             Movie(name: "Alien", director: "Ridley Scott")
         ]
         for object : AnyObject in someObjects {
-            let movie = object as Movie //downcasting to Optional Movie
-            println("Movie: '\(movie.name)', dir. \(movie.director)")
+            let movie = object as! Movie //downcasting to Optional Movie
+            print("Movie: '\(movie.name)', dir. \(movie.director)")
         }
         // Movie: '2001: A Space Odyssey', dir. Stanley Kubrick
         // Movie: 'Moon', dir. Duncan Jones
         // Movie: 'Alien', dir. Ridley Scott
         
-        for movie in someObjects as [Movie] { //it downcasts all someObjects as the array of Movie type elements
-            println("Movie: '\(movie.name)', dir. \(movie.director)")
+        for movie in someObjects as! [Movie] { //it downcasts all someObjects as the array of Movie type elements
+            print("Movie: '\(movie.name)', dir. \(movie.director)")
         }
         // Movie: '2001: A Space Odyssey', dir. Stanley Kubrick
         // Movie: 'Moon', dir. Duncan Jones
@@ -2241,23 +2287,23 @@ class ViewController: UIViewController {
         for thing in things {
             switch thing {
             case 0 as Int:
-                println("zero as an Int")
+                print("zero as an Int")
             case 0 as Double:
-                println("zero as a Double")
+                print("zero as a Double")
             case let someInt as Int:
-                println("an integer value of \(someInt)")
+                print("an integer value of \(someInt)")
             case let someDouble as Double where someDouble > 0:
-                println("a positive double value of \(someDouble)")
+                print("a positive double value of \(someDouble)")
             case is Double:
-                println("some other double value that I don't want to print")
+                print("some other double value that I don't want to print")
             case let someString as String:
-                println("a string value of \"\(someString)\"")
+                print("a string value of \"\(someString)\"")
             case let (x, y) as (Double, Double):
-                println("an (x, y) point at \(x), \(y)")
+                print("an (x, y) point at \(x), \(y)")
             case let movie as Movie:
-                println("a movie called '\(movie.name)', dir. \(movie.director)")
+                print("a movie called '\(movie.name)', dir. \(movie.director)")
             default:
-                println("something else")
+                print("something else")
             }
         }
         
@@ -2312,7 +2358,7 @@ class ViewController: UIViewController {
     
     func workingWithNestedTypes(){
         let theAceOfSpades = BlackjackCard(rank: .Ace, suit: .Spades)
-        println("theAceOfSpades: \(theAceOfSpades.description)")
+        print("theAceOfSpades: \(theAceOfSpades.description)")
         // prints "theAceOfSpades: suit is ♠, value is 1 or 11”
         
         //Referring to Nested Types
@@ -2324,13 +2370,13 @@ class ViewController: UIViewController {
     
     func computedPropertiesExtension(){
         let oneInch = 25.4.mm
-        println("One inch is \(oneInch) meters")
+        print("One inch is \(oneInch) meters")
         // prints "One inch is 0.0254 meters"
         let threeFeet = 3.ft
-        println("Three feet is \(threeFeet) meters")
+        print("Three feet is \(threeFeet) meters")
         // prints "Three feet is 0.914399970739201 meters"
         let aMarathon = 42.km + 195.m
-        println("A marathon is \(aMarathon) meters long")
+        print("A marathon is \(aMarathon) meters long")
         // prints "A marathon is 42195.0 meters long"
     }
     
@@ -2352,14 +2398,14 @@ class ViewController: UIViewController {
 
     func methodExtension(){
         3.repetitions({
-            println("Hello!")
+            print("Hello!")
             })
         // Hello!
         // Hello!
         // Hello!
         //or
         3.repetitions {
-            println("Goodbye!")
+            print("Goodbye!")
         }
         // Goodbye!
         // Goodbye!
@@ -2389,18 +2435,18 @@ class ViewController: UIViewController {
     }
     
     func printLetterKinds(word: String) {
-        println("'\(word)' is made up of the following kinds of letters:")
-        for character in word {
+        print("'\(word)' is made up of the following kinds of letters:")
+        for character in word.characters {
             switch character.kind {
             case .Vowel:
-                print("vowel ")
+                print("vowel ", terminator: "")
             case .Consonant:
-                print("consonant ")
+                print("consonant ", terminator: "")
             case .Other:
-                print("other ")
+                print("other ", terminator: "")
             }
         }
-        print("\n")
+        print("\n", terminator: "")
     }
 
     
@@ -2504,7 +2550,7 @@ protocol SomeProtocol {
 }
 
 protocol AnotherProtocol { // always use class even if type property is of structure
-    class var someTypeProperty: Int { get set }
+    static var someTypeProperty: Int { get set }
 }
 
 protocol FullyNamed {

@@ -70,7 +70,7 @@ alsoTenEighty.frameRate = 30.0
 //Identity Operaror
 if tenEighty === alsoTenEighty {
     "tenEighty and alsoTenEighty refer to the same Resolution instance."
-    println("tenEighty and alsoTenEighty refer to the same Resolution instance.")
+    print("tenEighty and alsoTenEighty refer to the same Resolution instance.")
 }
 // prints "tenEighty and alsoTenEighty refer to the same Resolution instance.
 
@@ -114,10 +114,10 @@ if b == c {
 }
 // prints "b and c now refer to two independent sets of array elements.”
 
-if b[0...1] == b[0...1] {
-    println("These two subarrays share the same elements.")
+if a[0...1] == b[0...1] {
+    print("These two subarrays share the same elements.")
 } else {
-    println("These two subarrays do not share the same elements.")
+    print("These two subarrays do not share the same elements.")
 }
 // prints "These two subarrays share the same elements.
 
@@ -139,7 +139,7 @@ if someString === someString { //someOtherString //try "someOtherString" string 
 var names = ["Mohsen", "Hilary", "Justyn", "Amy", "Rich", "Graham", "Vic"]
 var copiedNames = names
 copiedNames[0] = "Mo"
-println(names[0])
+print(names[0])
 // prints "Mohsen"
 
 

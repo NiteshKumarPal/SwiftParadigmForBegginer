@@ -26,7 +26,7 @@ let 🐶🐮 = "dogcaow"
 //Printing Constants and Variables
 var friendlyWelcome = "Hello!"
 friendlyWelcome = "Bonjour!"
-println(friendlyWelcome)
+print(friendlyWelcome)
 // prints "Bonjour!”
 
 //Comments
@@ -40,7 +40,7 @@ but written over multiple lines */
 this is the end of the first multiline comment */
 
 //semicolon
-let cat = "🐱"; println(cat)
+let cat = "🐱"; print(cat)
 // prints "🐱”
 
 //Integers
