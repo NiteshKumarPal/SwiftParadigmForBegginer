@@ -83,6 +83,9 @@ class ViewController: UIViewController {
         //Function types implimentations
         functionTypesImplimentations()
         
+        //Guard statement
+        guardStatementImplementation()
+        
         //Closures
         closureImplimentations()
         
@@ -932,6 +935,31 @@ class ViewController: UIViewController {
         // -2...
         // -1...
         // zero!
+    }
+    
+    //Guard statement
+    func guardStatementImplementation(){
+        let name :String? = "nitesh"
+        let age = 24
+    
+        guard age > 18 else {
+            return
+        }
+        
+        guard #available(iOS 9, *) else {
+            return
+        }
+        
+        func printName() {
+            guard let unwrappedName = name else {
+                print("You need to provide a name.")
+                return
+            }
+            
+            print(unwrappedName)
+        }
+        
+        printName()
     }
     
     //Closures
