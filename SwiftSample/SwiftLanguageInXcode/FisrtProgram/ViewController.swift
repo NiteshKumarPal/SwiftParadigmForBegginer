@@ -34,12 +34,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //working with tuple
-        workingWithTuples()
-        
         //Optional and Implicit unwrapping
         optionalAndImplicitUnwrapping()
         
+        //working with tuple
+        workingWithTuples()
         
         //“Floating-Point Remainder Calculations”
         let floatRemainder = 8 % 2.5
@@ -82,6 +81,9 @@ class ViewController: UIViewController {
         
         //Function types implimentations
         functionTypesImplimentations()
+        
+        //early exit
+        guardStatement()
         
         //Closures
         closureImplimentations()
@@ -144,7 +146,7 @@ class ViewController: UIViewController {
     }
  
     func workingWithTuples(){
-        let (Value1,value2,value3) = ("abc", "pqr", "xyz") //getGasPrices() //call a method which returns mutiple values
+        let (Value1,value2,value3) = ("abc", "pqr", "xyz") //getGasPrices() //call a method which returns multiple values
         print("\(Value1,value2,value3)")
     }
     
@@ -157,6 +159,7 @@ class ViewController: UIViewController {
         
         var largest = 0
         for(kind, numbers) in interestNumbers{ // swift is dynamic and intestNumbers(key value compliant) so you can write like (kind, numbers)
+            print(kind)
             for number in numbers{  //for each kind there numbers array
                 if number > largest{
                     largest = number
@@ -183,7 +186,7 @@ class ViewController: UIViewController {
         }
         print("firstForLoop\(firstForLoop)")
         //same works below
-        for var i = 0; i<3; ++i{
+        for _ in 0 ..< 3{
             firstForLoop+=1
         }
         print("firstForLoop\(firstForLoop)")
@@ -253,6 +256,38 @@ class ViewController: UIViewController {
             print("possibleString \(possibleString2)")
             
         }
+        // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+        
+        if let string = possibleString1 {
+            print(string)
+        } else {
+            print("string does not have value")
+        }
+    }
+    
+    func guardStatement() {
+        /*A guard statement, like an if statement, executes statements depending on the Boolean value of an expression. You use a guard statement to require that a condition must be true in order for the code after the guard statement to be executed. Unlike an if statement, a guard statement always has an else clause—the code inside the else clause is executed if the condition is not true.*/
+        func greet(person: [String: String]) {
+            guard let name = person["name"] else {
+                return
+            }
+            
+            print("Hello \(name)!")
+            
+            guard let location = person["location"] else {
+                print("I hope the weather is nice near you.")
+                return
+            }
+            
+            print("I hope the weather is nice in \(location).")
+        }
+        
+        greet(["name": "John"])
+        // Prints "Hello John!"
+        // Prints "I hope the weather is nice near you."
+        greet(["name": "Jane", "location": "Cupertino"])
+        // Prints "Hello Jane!"
+        // Prints "I hope the weather is nice in Cupertino."
     }
     
     func charactorWorking(){
@@ -304,7 +339,7 @@ class ViewController: UIViewController {
         var act1SceneCount = 0
         for scene in romeoAndJuliet {
             if scene.hasPrefix("Act 1 ") {
-                ++act1SceneCount
+                act1SceneCount += 1
             }
         }
         print("There are \(act1SceneCount) scenes in Act 1")
@@ -325,7 +360,7 @@ class ViewController: UIViewController {
     
     
     func arrayImplimentations(){
-        var shoppingList1: [String] = ["Eggs", "Milk"]
+        let shoppingList1: [String] = ["Eggs", "Milk"]
         var shoppingList2 = ["Eggs", "Milk"]     //shorthand initialisation
         print("The shopping list1 contains \(shoppingList1.count) items.", "The shopping list2 contains \(shoppingList2.count) items." )
         // prints "The shopping list contains 2 items.
@@ -336,8 +371,8 @@ class ViewController: UIViewController {
         shoppingList2.append("Baking Powder")
         // shoppingList now contains 4 items”
         
-        var firstItem = shoppingList2[0]
-         print("firstItem \(shoppingList2[0])")
+        let firstItem = shoppingList2[0]
+         print("firstItem \(firstItem)")
         
         
         shoppingList2[1...2] = ["Bananas", "Apples"]
@@ -1103,7 +1138,7 @@ class ViewController: UIViewController {
         
         //Assiciated Values
         enumerationWithAssociationValues1()
-        //enumerationWithAssociationValues2()
+        enumerationWithAssociationValues2()
         
         //Raw Values
         enum ASCIIControlCharacter: Character {
@@ -1135,6 +1170,7 @@ class ViewController: UIViewController {
             case QRCode(String)
         }
         var productBarcode = Barcode.UPCA(8, 85909_51226, 3)
+        
         productBarcode = .QRCode("ABCDEFGHIJKLMNOP")
         
         
@@ -2281,7 +2317,7 @@ class ViewController: UIViewController {
         things.append(42)
         things.append(3.14159)
         things.append("hello")
-        things.append((3.0, 5.0))
+       // things.append((3.0, 5.0))
         things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
         
         for thing in things {
@@ -2298,8 +2334,8 @@ class ViewController: UIViewController {
                 print("some other double value that I don't want to print")
             case let someString as String:
                 print("a string value of \"\(someString)\"")
-            case let (x, y) as (Double, Double):
-                print("an (x, y) point at \(x), \(y)")
+//            case let (x, y) as (Double, Double):
+//                print("an (x, y) point at \(x), \(y)")
             case let movie as Movie:
                 print("a movie called '\(movie.name)', dir. \(movie.director)")
             default:
