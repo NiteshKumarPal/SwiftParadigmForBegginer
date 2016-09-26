@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1356"
             endingLineNumber = "1356"
-            landmarkName = "workingWithReadOnlyComputedProperty()"
-            landmarkType = "5">
+            landmarkName = "DataImporter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
